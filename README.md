@@ -2,11 +2,15 @@
 
 # Terraform/Artefacts setup
 ##first setup your terraform variables as below
+- clone repo in to your loca machine
+- cd to donwlaoded directory
 - export AWS_ACCESS_KEY_ID=AKIXXXXXXXXXXXXXXXXXXXXXXXXX
 - export AWS_SECRET_ACCESS_KEY=12+DQVlXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 - export TF_VAR_profile=yours
 - export TF_VAR_region=eu-west-2
 - export TF_VAR_key_name=yourkey
+- create a bucket in eu-west-2 . give it a unique name
+- run this command ```bucket_name=xxxxx && find . -name "*.tf" -exec sed -i -e "s#elk-terraform-remote-state-storage-s3#$bucket_name#g" '{}' \; ```
 
 
 ## setup required artefacts

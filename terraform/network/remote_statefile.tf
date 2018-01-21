@@ -1,7 +1,7 @@
 terraform {
  backend "s3" {
  encrypt = true
- bucket = "${var.infra_bucket}}"
+ bucket = "elk-terraform-remote-state-storage-s3"
  region = "eu-west-2"
  key = "Network_routing/terraform.tfstate"
  }
