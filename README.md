@@ -14,7 +14,7 @@
 
 
 ## setup required artefacts
-- cd to  terraform/accessories and run terraform plan , then run terrafrom apply
+- cd to  terraform/accessories and run terraform init && rerraform plan , then run terrafrom apply
 - if all goes well cd to network and do the same
 - next to ELK-Artefacts
 
