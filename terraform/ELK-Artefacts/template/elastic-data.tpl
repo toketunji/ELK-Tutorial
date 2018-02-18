@@ -6,7 +6,7 @@ set -e
 ### install JDK-8 and update JRE link
 sudo yum -y install java-1.8.0-openjdk-devel.x86_64
 sudo rm -f /usr/bin/java
-sudo ln -s /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.151-1.b12.35.amzn1.x86_64/bin/java  /usr/bin/java
+sudo ln -s /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.161-0.b14.36.amzn1.x86_64/bin/java  /usr/bin/java
 
 
 ### Install and configure Elasticsearch 
@@ -88,7 +88,7 @@ cat <<EOF >/tmp/jvm.options
 
 
 ## binf to IPV4
-java.net.preferIPv4Stack=true
+-Djava.net.preferIPv4Stack=true
 EOF
 
 sudo cp /etc/elasticsearch/jvm.options /etc/elasticsearch/jvm.option_bk
