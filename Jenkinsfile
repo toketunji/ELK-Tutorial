@@ -3,10 +3,9 @@ pipeline {
 environment {
         TERRAFORM_CMD = 'docker run --network host " -w /app -v ${HOME}/.aws:/root/.aws -v ${HOME}/.ssh:/root/.ssh -v `pwd`:/app hashicorp/terraform:light'
     }
-    agent {
+  agent {
       node('slave_001') {
-    
-        stages {
+      	stages {
           stage('checkout repo') {
             steps {
               git url: 'https://github.com/toketunji/ELK-Tutorial.git'
@@ -47,6 +46,6 @@ environment {
             }
           }  
         }
-    }
-    }
+      }
+  }
 }
