@@ -15,8 +15,8 @@ resource "aws_s3_bucket" "terraform-state-storage-s3" {
 }
 
 provider "aws" {
-  region  = "${var.region}"
-  profile = "${var.profile}"
+  region  = "eu-west-1"
+  profile = "default"
 }
 
 
