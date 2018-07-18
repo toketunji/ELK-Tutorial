@@ -1,31 +1,32 @@
 pipeline {
-    agent {
-      node('slave_001') {
-    
+
 environment {
         TERRAFORM_CMD = 'docker run --network host " -w /app -v ${HOME}/.aws:/root/.aws -v ${HOME}/.ssh:/root/.ssh -v `pwd`:/app hashicorp/terraform:light'
     }
-    stages {
-        stage('checkout repo') {
+    agent {
+      node('slave_001') {
+    
+        stages {
+          stage('checkout repo') {
             steps {
               git url: 'https://github.com/toketunji/ELK-Tutorial.git'
             }
-        }
-        stage('pull latest light terraform image') {
+          }
+          stage('pull latest light terraform image') {
             steps {
                 sh  """
                     docker pull hashicorp/terraform:light
                     """
             }
-        }
-        stage('init') {
+          }
+          stage('init') {
             steps {
                 sh  """
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     """
             }
-        }
-        stage('plan') {
+          }
+          stage('plan') {
             steps {
                 sh  """
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false 
@@ -36,15 +37,15 @@ environment {
                   }
                 }
             }
-        }
-        stage('apply') {
+          }  
+          stage('apply') {
             steps {
                 sh  """
                     ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
 
-}
-        }
+            }
+          }  
         }
     }
     }
