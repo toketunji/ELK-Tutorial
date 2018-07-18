@@ -48,5 +48,4 @@ environment {
             }
           }  
         }
-      }
 }
