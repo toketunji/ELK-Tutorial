@@ -16,7 +16,7 @@ environment {
           stage('pull latest light terraform image') {
             steps {
                 sh  """
-                    docker pull hashicorp/terraform:light
+                    sudo docker pull hashicorp/terraform:light
                     """
             }
           }
