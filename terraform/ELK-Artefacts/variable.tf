@@ -9,8 +9,14 @@ variable "infra_bucket" {
   default = "tealbucket"
 }
 
-variable "key_name"     {}
+variable "key_name"     {
+  default = "JenkinsKey"
+}
 
-variable "region"  {}
-variable "profile" {}
+variable "region"  {
+  default = "eu-west-1"
+}
+variable "profile" {
+  default = "default"
+}
 
