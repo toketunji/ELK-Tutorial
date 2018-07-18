@@ -5,7 +5,7 @@ pipeline {
         }
     }
 environment {
-    TERRAFORM_CMD = 'sudo docker run --network host -w /app -v ${HOME}/.aws:/root/.aws -v ${HOME}/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/network":/app hashicorp/terraform:light'
+    TERRAFORM_CMD = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/network":/app hashicorp/terraform:light'
     }
       	stages {
           stage('checkout repo') {
