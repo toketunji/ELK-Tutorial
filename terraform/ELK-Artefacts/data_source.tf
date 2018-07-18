@@ -3,7 +3,7 @@ data "terraform_remote_state" "network_info" {
 
   config {
     encrypt = "true"
-    bucket  = "elk-terraform-remote-state-storage-s3"
+    bucket  = "tealbucket"
     key     = "Network_routing/terraform.tfstate"
     region  = "eu-west-2"
     profile = "lab"

@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform-state-storage-s3" {
-    bucket = "elk-terraform-remote-state-storage-s3"
+    bucket = "tealbucket"
 
     versioning {
       enabled = true
@@ -10,7 +10,7 @@ resource "aws_s3_bucket" "terraform-state-storage-s3" {
     }
 
     tags {
-      Name = "S3 Remote Terraform State Store"
+      Name = "TEAL O Terraform State Store"
     }
 }
 

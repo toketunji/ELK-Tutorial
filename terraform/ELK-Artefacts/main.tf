@@ -38,7 +38,7 @@ resource "aws_instance" "kibana" {
   vpc_security_group_ids      = ["${aws_security_group.elasticsearch_allow.id}"]
 
   tags {
-    Name = "Elastic search"
+    Name = "Kibana"
   }
 }
 
@@ -87,7 +87,7 @@ resource "aws_security_group" "elasticsearch_allow" {
   }
 
   tags {
-    Name = "Elastic search SG"
+    Name = "Kibana/Elastic search SG"
   }
 }
 
