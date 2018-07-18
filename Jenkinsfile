@@ -23,6 +23,8 @@ environment {
           stage('init') {
             steps {
                 sh  """
+		    cd terraform
+                    cd network
 		    pwd
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     """
