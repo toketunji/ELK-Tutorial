@@ -1,7 +1,7 @@
-#provider "aws" {
-  #region  =  "${var.region}"
- # profile  = "${var.profile}"
-#}
+provider "aws" {
+  region  =  "eu-west-1"
+  profile  = "default"
+}
 
 #####Create VPC  for ELK ##################
 
