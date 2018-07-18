@@ -1,7 +1,7 @@
-provider "aws" {
+#provider "aws" {
   #region  =  "${var.region}"
-  profile  = "${var.profile}"
-}
+ # profile  = "${var.profile}"
+#}
 
 #####Create VPC  for ELK ##################
 
