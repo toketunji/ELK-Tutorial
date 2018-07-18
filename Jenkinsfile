@@ -20,14 +20,14 @@ environment {
                     """
             }
           }
-          stage('init') {
-            steps {
-                sh  """
-		    pwd
-                    ${TERRAFORM_CMD} init -backend=true -input=false
-                    """
-            }
-          }
+#          stage('init') {
+#            steps {
+#                sh  """
+#		    pwd
+#                    ${TERRAFORM_CMD} init -backend=true -input=false
+#                    """
+#            }
+#          }
           stage('plan') {
             steps {
                 sh  """
