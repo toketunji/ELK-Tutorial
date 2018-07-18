@@ -26,7 +26,7 @@ environment {
 		    cd terraform
                     cd network
 		    pwd
-                    ${TERRAFORM_CMD} init -backend=true -input=false
+                    ${TERRAFORM_CMD} init -input=false
                     """
             }
           }
