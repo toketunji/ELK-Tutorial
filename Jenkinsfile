@@ -25,6 +25,7 @@ environment {
                 sh  """
                     cd terraform
 		    cd network
+		    pwd
                     sudo ${TERRAFORM_CMD} init -backend=true -input=false
                     """
             }
