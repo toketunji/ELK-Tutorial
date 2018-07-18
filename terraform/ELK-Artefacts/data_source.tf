@@ -5,7 +5,7 @@ data "terraform_remote_state" "network_info" {
     encrypt = "true"
     bucket  = "tealbucket"
     key     = "Network_routing/terraform.tfstate"
-    region  = "eu-west-2"
+    region  = "eu-west-1"
     profile = "lab"
   }
 }
