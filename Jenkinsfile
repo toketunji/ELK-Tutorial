@@ -27,19 +27,31 @@ environment {
                     cd network
 		    pwd
                     ${TERRAFORM_CMD} init -backend=true -input=false
+		    ${TERRAFORM_CMD} plan -out=tfplan -input=false
+		    ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
             }
           }
           stage('plan') {
             steps {
                 sh  """
-                    ${TERRAFORM_CMD} plan -out=tfplan -input=false 
+ 		    cd terraform
+                    cd ELK-Artefacts
+                    pwd
+                    ${TERRAFORM_CMD} init -backend=true -input=false
+                    ${TERRAFORM_CMD} plan -out=tfplan -input=false
+                    ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
             }
           }  
           stage('apply') {
             steps {
                 sh  """
+		    cd terraform
+                    cd accessories
+                    pwd
+                    ${TERRAFORM_CMD} init -backend=true -input=false
+                    ${TERRAFORM_CMD} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
 
