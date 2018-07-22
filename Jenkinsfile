@@ -20,18 +20,18 @@ environment {
                     """
             }
           }
-          stage('init') {
-            steps {
-                sh  """
-		    cd terraform
-                    cd accessories
-		    pwd
-                    ${TERRAFORM_CMD} init -backend=true -input=false
-		    ${TERRAFORM_CMD} plan -out=tfplan -input=false
-		    ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
-                    """
-            }
-          }
+#          stage('init') {
+#            steps {
+#                sh  """
+#		    cd terraform
+#                    cd accessories
+#		    pwd
+#                    ${TERRAFORM_CMD} init -backend=true -input=false
+#		    ${TERRAFORM_CMD} plan -out=tfplan -input=false
+#		    ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
+#                    """
+#            }
+#          }
           stage('plan') {
             steps {
                 sh  """
