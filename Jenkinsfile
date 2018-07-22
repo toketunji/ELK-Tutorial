@@ -24,7 +24,7 @@ environment {
             steps {
                 sh  """
 		    cd terraform
-                    cd network
+                    cd accessories
 		    pwd
                     ${TERRAFORM_CMD} init -backend=true -input=false
 		    ${TERRAFORM_CMD} plan -out=tfplan -input=false
@@ -36,7 +36,7 @@ environment {
             steps {
                 sh  """
  		    cd terraform
-                    cd ELK-Artefacts
+                    cd network
                     pwd
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
@@ -48,7 +48,7 @@ environment {
             steps {
                 sh  """
 		    cd terraform
-                    cd accessories
+                    cd ELK-Artefacts
                     pwd
                     ${TERRAFORM_CMD} init -backend=true -input=false
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
