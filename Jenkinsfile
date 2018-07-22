@@ -20,7 +20,7 @@ environment {
                     """
             }
           }
-          stage('plan') {
+          stage('init') {
             steps {
                 sh  """
                     cd terraform
@@ -32,7 +32,6 @@ environment {
                     """
             }
           }
-
           stage('plan') {
             steps {
                 sh  """
