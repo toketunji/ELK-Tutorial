@@ -10,6 +10,7 @@ environment {
       	stages {
           stage('checkout repo') {
             steps {
+	      rm -rf /home/jenkins/workspace/ELK_Stack
               git url: 'https://github.com/toketunji/ELK-Tutorial.git'
             }
           }
