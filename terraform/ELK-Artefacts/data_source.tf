@@ -3,7 +3,7 @@ data "terraform_remote_state" "network_info" {
 
   config {
     encrypt = "true"
-    bucket  = "tealbucket"
+    bucket  = "tealbucket1"
     key     = "Network_routing/terraform.tfstate"
     region  = "eu-west-1"
     profile = "lab"
