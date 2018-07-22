@@ -6,17 +6,17 @@ variable "ami_id"        {
 }
 
 variable "infra_bucket" {
-  default = "tealbucket"
+  default = "tealbucket1"
 }
 
 variable "key_name"     {
   default = "JenkinsKey"
 }
 
-variable "region"  {
-  default = "eu-west-1"
-}
-variable "profile" {
-  default = "default"
-}
+#variable "region"  {
+#  default = "eu-west-1"
+#}
+#variable "profile" {
+#  default = "default"
+#}
 
