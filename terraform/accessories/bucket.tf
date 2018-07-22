@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "terraform-state-storage-s3" {
-    bucket = "tealbucket"
+    bucket = "tealbucket1"
 
     versioning {
       enabled = true
