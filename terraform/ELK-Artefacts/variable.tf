@@ -6,7 +6,7 @@ variable "ami_id"        {
 }
 
 variable "infra_bucket" {
-  default = "tealbucket1"
+  default = "buc003"
 }
 
 variable "key_name"     {

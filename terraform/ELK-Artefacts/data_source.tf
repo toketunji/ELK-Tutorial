@@ -6,7 +6,7 @@ data "terraform_remote_state" "network_info" {
     bucket  = "buc003"
     key     = "Network_routing/terraform.tfstate"
     region  = "eu-west-1"
-    profile = "lab"
+    profile = "default"
   }
 }
 
