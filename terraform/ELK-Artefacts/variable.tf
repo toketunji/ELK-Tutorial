@@ -2,7 +2,7 @@ variable "instance_type" {
   default = "t2.micro"
 }
 variable "ami_id"        {
-  default = "ami-51809835"
+  default = "ami-e4515e0e"
 }
 
 variable "infra_bucket" {
