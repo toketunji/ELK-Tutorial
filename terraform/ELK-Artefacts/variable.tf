@@ -10,7 +10,7 @@ variable "infra_bucket" {
 }
 
 variable "key_name"     {
-  default = "JenkinsKey"
+  default = "TealO"
 }
 
 variable "region"  {
