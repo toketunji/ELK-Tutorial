@@ -61,5 +61,19 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
 
             }
           }
-        } 
-}
+	  stage('Destroy') {
+	    steps {
+	      script {
+                  timeout(time: 10, unit: 'MINUTES') {
+                    input(id: "Deploy Gate", message: "Destroy Infrastructure", ok: 'Deploy')
+                  }
+	      }
+              ansicolor('xterm') {
+		  sh """
+		      ${TERRAFORM_CMD} destroy -auto-approve -input=false
+		      ${TERRAFORM_CMD1} destroy -auto-approve -input=false
+                      ${TERRAFORM_CMD2} destroy -auto-approve -input=false
+              }     
+            } 
+
+         }
