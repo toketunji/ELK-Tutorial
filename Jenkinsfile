@@ -58,20 +58,21 @@ environment {
                     ${TERRAFORM_CMD2} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD2} apply -lock=false -input=false tfplan
                     """
-            }
+                script {
+                  timeout(time: 10, unit: 'MINUTES') {
+                    input(id: "Deploy Gate", message: "Waiting to Destroy", ok: 'Deploy')
+          
+                  }
+                }
+	      }
           }
 	  stage('Destroy') {
 	    steps {
-	      script {
-                  timeout(time: 10, unit: 'MINUTES') {
 		  sh """
-                      ${TERRAFORM_CMD} destroy -auto-approve -input=false
                       ${TERRAFORM_CMD1} destroy -auto-approve -input=false
                       ${TERRAFORM_CMD2} destroy -auto-approve -input=false
                       """
                   }
 	      }
-            } 
-         }
       }
 }
