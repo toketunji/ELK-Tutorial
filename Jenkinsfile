@@ -7,9 +7,9 @@ pipeline {
 environment {
     TERRAFORM_CMD = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/accessories":/app hashicorp/terraform:light'
 
-TERRAFORM_CMD1 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/network":/app hashicorp/terraform:light'
+    TERRAFORM_CMD1 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/network":/app hashicorp/terraform:light'
 
-TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/ELK-Artefacts":/app hashicorp/terraform:light'
+    TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aws -v /root/.ssh:/root/.ssh -v "${WORKSPACE}/terraform/ELK-Artefacts":/app hashicorp/terraform:light'
     }
       	stages {
           stage('checkout repo') {
@@ -24,7 +24,7 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
                     """
             }
           }
-          stage('init') {
+          stage('Init') {
             steps {
                 sh  """
                     cd terraform
@@ -36,7 +36,7 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
                     """
             }
           }
-          stage('plan') {
+          stage('Plan') {
             steps {
                 sh  """
  		    cd terraform
@@ -48,7 +48,7 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
                     """
             }
           }  
-          stage('apply') {
+          stage('Apply') {
             steps {
                 sh  """
 		    cd terraform
@@ -58,7 +58,6 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
                     ${TERRAFORM_CMD2} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD2} apply -lock=false -input=false tfplan
                     """
-
             }
           }
 	  stage('Destroy') {
@@ -73,6 +72,7 @@ TERRAFORM_CMD2 = 'sudo docker run --network host -w /app -v /root/.aws:/root/.aw
 		      ${TERRAFORM_CMD} destroy -auto-approve -input=false
 		      ${TERRAFORM_CMD1} destroy -auto-approve -input=false
                       ${TERRAFORM_CMD2} destroy -auto-approve -input=false
+ 		      """
               }     
             } 
 
