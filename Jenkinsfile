@@ -60,13 +60,5 @@ environment {
                     """
 	      }
           }
-	  stage('Destroy') {
-	    steps {
-		  sh """
-                      ${TERRAFORM_CMD1} destroy -auto-approve -input=false
-                      ${TERRAFORM_CMD2} destroy -auto-approve -input=false
-                      """
-                  }
-	      }
       }
 }
