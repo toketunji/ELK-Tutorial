@@ -26,11 +26,13 @@ environment {
           }
           stage('Init') {
             steps {
-                sh  """
+                sh """
                     cd terraform
                     cd ELK-Artefacts
                     pwd
                     ${TERRAFORM_CMD2} init -backend=true -input=false
+		    """
+		sh """
 		    cd terraform
                     cd network
                     pwd
