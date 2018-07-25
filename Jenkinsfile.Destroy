@@ -26,6 +26,7 @@ environment {
           }
           stage('Init') {
             steps {
+	      ansiColor('xterm') {
                 sh """
                     cd terraform
                     cd ELK-Artefacts
@@ -38,15 +39,18 @@ environment {
                     pwd
                     ${TERRAFORM_CMD1} init -backend=true -input=false
                     """
+              }
             }
           }
 	  stage('Destroy') {
 	    steps {
+              ansiColor('xterm') {
 		  sh """
                       ${TERRAFORM_CMD2} destroy -auto-approve -input=false
                       ${TERRAFORM_CMD1} destroy -auto-approve -input=false
                       """
                   }
-	      }
+              }
+	    }
       }
 }
