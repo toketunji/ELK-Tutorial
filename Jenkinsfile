@@ -26,6 +26,7 @@ environment {
           }
           stage('Init') {
             steps {
+	      ansiColor('xterm') {
                 sh  """
                     cd terraform
                     cd accessories
@@ -34,6 +35,7 @@ environment {
                     ${TERRAFORM_CMD} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
+              }
             }
           }
           stage('Plan') {
