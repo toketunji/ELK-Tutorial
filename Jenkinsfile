@@ -40,6 +40,7 @@ environment {
           }
           stage('Plan') {
             steps {
+	      ansiColor('xterm') {
                 sh  """
  		    cd terraform
                     cd network
@@ -48,10 +49,12 @@ environment {
                     ${TERRAFORM_CMD1} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD1} apply -lock=false -input=false tfplan
                     """
+              }
             }
           }  
           stage('Apply') {
             steps {
+	      ansiColor('xterm') {
                 sh  """
 		    cd terraform
                     cd ELK-Artefacts
@@ -60,7 +63,8 @@ environment {
                     ${TERRAFORM_CMD2} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD2} apply -lock=false -input=false tfplan
                     """
-	      }
+	        }
+              }
           }
       }
 }
