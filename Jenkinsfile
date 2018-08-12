@@ -19,14 +19,18 @@ environment {
           }
           stage('pull latest light terraform image') {
             steps {
+              withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
                     sudo docker pull hashicorp/terraform:light
                     """
+              }
             }
+ 
           }
           stage('Init') {
             steps {
 	      ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
                     cd terraform
                     cd accessories
@@ -36,11 +40,13 @@ environment {
                     ${TERRAFORM_CMD} apply -lock=false -input=false tfplan
                     """
               }
+              }
             }
           }
           stage('Plan') {
             steps {
 	      ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
  		    cd terraform
                     cd network
@@ -49,12 +55,14 @@ environment {
                     ${TERRAFORM_CMD1} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD1} apply -lock=false -input=false tfplan
                     """
+               }
               }
             }
           }  
           stage('Apply') {
             steps {
 	      ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh  """
 		    cd terraform
                     cd ELK-Artefacts
@@ -63,6 +71,7 @@ environment {
                     ${TERRAFORM_CMD2} plan -out=tfplan -input=false
                     ${TERRAFORM_CMD2} apply -lock=false -input=false tfplan
                     """
+               }
 	        }
               }
           }
