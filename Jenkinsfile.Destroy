@@ -27,6 +27,7 @@ environment {
           stage('Init') {
             steps {
 	      ansiColor('xterm') {
+               withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
                 sh """
                     cd terraform
                     cd ELK-Artefacts
@@ -40,15 +41,18 @@ environment {
                     ${TERRAFORM_CMD1} init -backend=true -input=false
                     """
               }
+              }
             }
           }
 	  stage('Destroy') {
 	    steps {
               ansiColor('xterm') {
+                withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
 		  sh """
                       ${TERRAFORM_CMD2} destroy -auto-approve -input=false
                       ${TERRAFORM_CMD1} destroy -auto-approve -input=false
                       """
+                }
                   }
               }
 	    }
